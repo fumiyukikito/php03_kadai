@@ -39,3 +39,5 @@ if ($status == false) {
 } else {
     redirect('bm_update_view.php');
 }
+
+?>

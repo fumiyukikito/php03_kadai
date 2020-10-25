@@ -2,7 +2,7 @@
 //１．PHP
 //select.phpのPHPコードをマルっとコピーしてきます。
 //※SQLとデータ取得の箇所を修正します。
-$unique_book = $_GET['unique_book'];
+$user_id = $_GET['user_id'];
 // require_once("funcs.php");
 
 try {
@@ -18,9 +18,9 @@ try {
 }
 
 //２．データ登録SQL作成
-$stmt = $pdo->prepare("SELECT * FROM gs_bm_table
-                        WHERE unique_book=:unique_book");
-$stmt->bindValue(':unique_book',$unique_book, PDO::PARAM_INT);
+$stmt = $pdo->prepare("SELECT * FROM gs_user_table
+                        WHERE user_id=:user_id");
+$stmt->bindValue(':user_id',$user_id, PDO::PARAM_INT);
 $status = $stmt->execute();
 //３．データ表示
 $view = "";
@@ -56,7 +56,7 @@ if ($status == false) {
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php">データ登録</a>
+                    <a class="navbar-brand" href="index_user.php">データ登録</a>
                 </div>
             </div>
         </nav>
@@ -71,24 +71,17 @@ if ($status == false) {
         </div>
     </div> -->
 
-    <!-- Main[End] -->
-    <!--
-２．HTML
-以下にindex.phpのHTMLをまるっと貼り付ける！
-理由：入力項目は「登録/更新」はほぼ同じになるからです。
-※form要素 input type="hidden" name="id" を１項目追加（非表示項目）
-※form要素 action="update.php"に変更
-※input要素 value="ここに変数埋め込み"
--->
 <!-- Main[Start] -->
-    <form method="POST" action="bm_update.php">
+    <form method="POST" action="user_bm_update.php">
         <div class="jumbotron">
             <fieldset>
-                <legend>bookmark</legend>
-                <label>書籍名：<input type="text" name="bookname" value=<?= $result['bookname'] ?>></label><br>
-                <label>URL：<input type="text" name="bookURL" value=<?= $result['bookURL'] ?>></label><br>
-                <label><textArea name="bookcomment" rows="4" cols="40"> <?= $result['bookcomment'] ?> </textArea></label><br>
-                <input type="hidden" name="unique_book" value=<?= $result['unique_book'] ?>>
+                <legend>ユーザー情報</legend>
+                <label>ユーザー名：<input type="text" name="user_name" value=<?= $result['user_name'] ?>></label><br>
+                <label>ID：<input type="text" name="user_lid" value=<?= $result['user_lid'] ?>></label><br>
+                <label>PASS：<input type="text" name="user_lpw" value=<?= $result['user_lpw'] ?>></label><br>
+                <label>管理者：<input type="checkbox" name="user_kanri_flg" id="user_kanri_flg" value="1" <?php echo ($result['user_kanri_flg']==1 ? 'checked' : '') ?>></label><br>
+                <label>退職者：<input name="user_life_flg" type="hidden" value="0" />
+     <input name="user_life_flg" type="checkbox" value="1" /></label><br>
                 <input type="submit" value="送信">
             </fieldset>
         </div>
