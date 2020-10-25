@@ -85,8 +85,8 @@ if ($status == false) {
         <div class="jumbotron">
             <fieldset>
                 <legend>フリーアンケート</legend>
-                <label>名前：<input type="text" name="bookname" value=<?= $result['bookname'] ?>></label><br>
-                <label>Email：<input type="text" name="bookURL" value=<?= $result['bookURL'] ?>></label><br>
+                <label>書籍名：<input type="text" name="bookname" value=<?= $result['bookname'] ?>></label><br>
+                <label>URL：<input type="text" name="bookURL" value=<?= $result['bookURL'] ?>></label><br>
                 <label><textArea name="bookcomment" rows="4" cols="40"> <?= $result['bookcomment'] ?> </textArea></label><br>
                 <input type="hidden" name="unique_book" value=<?= $result['unique_book'] ?>>
                 <input type="submit" value="送信">
