@@ -1,6 +1,6 @@
 <?php 
 require_once('funcs.php');
-$unique_book = $_GET['user_id'];
+$user_id = $_GET['user_id'];
 // var_dump($id);
 $pdo = db_conn();
 //３．データ登録SQL作成
