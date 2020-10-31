@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 //１．PHP
 //select.phpのPHPコードをマルっとコピーしてきます。
 //※SQLとデータ取得の箇所を修正します。
@@ -79,10 +82,11 @@ if ($status == false) {
                 <label>ユーザー名：<input type="text" name="user_name" value=<?= $result['user_name'] ?>></label><br>
                 <label>ID：<input type="text" name="user_lid" value=<?= $result['user_lid'] ?>></label><br>
                 <label>PASS：<input type="text" name="user_lpw" value=<?= $result['user_lpw'] ?>></label><br>
-                <label>管理者：<input type="checkbox" name="user_kanri_flg" id="user_kanri_flg" value="1" <?php echo ($result['user_kanri_flg']==1 ? 'checked' : '') ?>></label><br>
-                <label>退職者：<input name="user_life_flg" type="hidden" value="0" />
-     <input name="user_life_flg" type="checkbox" value="1" /></label><br>
-                <input type="submit" value="送信">
+                <label>管理者：<input type="checkbox" name="user_kanri_flg" id="user_kanri_flg" value="1"  <?php echo ($result['user_kanri_flg']==1 ? 'checked' : '') ?>></label><br>
+                <label>退職者：<input name="user_life_flg" type="hidden" value="0" /><input name="user_life_flg" type="checkbox" value="1" /></label><br>
+                <input type="hidden" name="user_id" value=<?= $user_id ?>>
+
+                <input type="submit" value="送信">  
             </fieldset>
         </div>
     </form>
