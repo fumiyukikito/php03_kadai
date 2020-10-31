@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 
 //１．PHP
 //select.phpのPHPコードをマルっとコピーしてきます。
